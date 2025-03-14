@@ -1,0 +1,31 @@
+function findCheapestPizzaPackage(slicesNedded){
+    const pizzaPacks = [
+        {name: "Small Pack", price: 15, slice: 10},
+        {name: "Medium Pack", price: 25, slice: 20},
+        {name: "Large Pack", price: 35, slice: 30},
+        {name: "Extra-Large", price: 50, slice: 50},
+    ];
+    let bestOption = null;
+    let minCost = Infinity;
+    
+    for (const pkg of pizzaPacks) {
+        const packagesNeeded = Math.ceil(sliceNeeded / pkg.slices);
+        const totalCost = packagesNeeded * pkg.price;
+        
+        if(totalCost < minCost) {
+            minCost = totalCost;
+            bestOption = {
+                name: pkg.name,
+                packagesNeeded: packagesNeeded,
+                totalCost: totalCost
+            };
+        }
+        return bestOption;
+    }
+    //      number of slice they need
+    console.log('they need',packagesNeeded);
+    console.log(findCheapestPizzaPackage(15));
+    console.log(findCheapestPizzaPackage(25));
+    console.log(findCheapestPizzaPackage(35));
+    console.log(findCheapestPizzaPackage(50));
+}
